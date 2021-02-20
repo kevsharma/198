@@ -1,0 +1,40 @@
+Algorithm 1:
+
+Procedure find_n_smallest
+	
+	heap = new Min Heap
+	result array = new array of size n
+	index_result = 0
+	
+	for i=1 to n:
+		pair = (Ai[0], (Ai, 0)) // O(1) time -> constant retrieval of min element from Ai
+		heap.add(pair)	// O(log n) time
+		
+	// above for loop took O(n * logn) time.
+	
+	repeat n-1 times:
+			// get smallest element
+			pair = heap.find-min() // O(1) time
+			heap.delete-min() // O(log n) time
+			
+			// add that smallest element
+			result[index_result] = pair.key
+			index_result++
+			
+			// replace that smallest element from Ai in heap with next smallest in Ai
+			// this will take constant time, as our pair.value keeps track of Ai, index
+			heap.delete-min() // O(log n) 
+			
+			arrayOfmin = pair.value.array
+			nextSmallestIndex = pair.value.index + 1
+			pair = (arrayOfMin[nextSmallestIndex], (arrayOfMin, nextSmallestIndex))
+			
+			heap.add(pair) // O(log n)
+	
+	// for the nth entry in result, we don't need to replace the min with a new min
+	// so we can skip those steps (since nextSmallestIndex would go overbound if all the n 				smallest elements originate from the same array)
+	
+	pair = heap.find-min() // O(log n)
+	result[index_result] = pair.key // O(1) 
+	
+	return result

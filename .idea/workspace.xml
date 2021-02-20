@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="57add93c-686c-4fa7-a484-29a0c99c100b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/bst" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/bst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/bst.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/bst.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/examples.desktop" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/hashTable" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/hashTable" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/hashTable.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/hashTable.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/linkedList" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/linkedList" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/linkedList.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/linkedList.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/sortArray" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/sortArray" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/sortArray.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/sortArray.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/stringOps" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/stringOps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/stringOps.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1/stringOps.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/bst" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/bst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/bst.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/bst.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/examples.desktop" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/hashTable" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/hashTable" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/hashTable.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/hashTable.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/linkedList" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/linkedList" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/linkedList.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/linkedList.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/sortArray" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/sortArray" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/sortArray.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/sortArray.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/stringOps" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/stringOps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/stringOps.c" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1/stringOps.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs211/ilabToUbuntu/bomb875.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/photos53/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/photos53/src/app/Photos.java" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs213/photos53/src/app/Photos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/photos53/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs213/photos53/src/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/songlib/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs213/songlib/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/songlib/bin/app/SongLib.class" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs213/songlib/bin/app/SongLib.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/198/cs213/songlib/bin/view/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/198/cs213/songlib/bin/view/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/twitterproj/Kev-Twitter-Bot/src/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitterproj/Kev-Twitter-Bot/src/bot.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1" />
+  </component>
+  <component name="ProjectId" id="1mqzRC4i4bZHcdZgfjRhrz3i4oR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

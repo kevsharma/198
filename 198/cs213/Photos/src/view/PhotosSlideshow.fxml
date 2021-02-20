@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Kev Sharma and Dhruti Shah -->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="756.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhotosSlideshowController">
+   <children>
+      <Button fx:id="slideLeft" layoutX="223.0" layoutY="667.0" mnemonicParsing="false" onAction="#slideLeftPressed" prefHeight="39.0" prefWidth="42.0" text="&lt;" />
+      <Button fx:id="slideRight" layoutX="319.0" layoutY="667.0" mnemonicParsing="false" onAction="#slideRightPressed" prefHeight="39.0" prefWidth="42.0" text="&gt;" />
+      <Label layoutX="276.0" layoutY="103.0" text="Photos Slideshow">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="caption" layoutX="340.0" layoutY="158.0" prefHeight="27.0" prefWidth="170.0" text="Caption: " />
+      <Label fx:id="date" layoutX="340.0" layoutY="195.0" prefHeight="27.0" prefWidth="170.0" text="Date:" />
+      <Button fx:id="logout" layoutX="722.0" layoutY="35.0" mnemonicParsing="false" onAction="#logoutPressed" text="Logout" />
+      <Button fx:id="back" layoutX="50.0" layoutY="35.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="26.0" prefWidth="162.0" text="&lt; Back to my Album" />
+      <Text layoutX="596.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This Photo is Tagged with:" wrappingWidth="251.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Button fx:id="quit" layoutX="656.0" layoutY="35.0" mnemonicParsing="false" onAction="#quitPressed" text="Quit" />
+      <ImageView fx:id="imageview" fitHeight="430.0" fitWidth="451.0" layoutX="64.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <Glow>
+               <input>
+                  <InnerShadow />
+               </input>
+            </Glow>
+         </effect></ImageView>
+      <ListView fx:id="tagListView" layoutX="530.0" layoutY="296.0" prefHeight="337.0" prefWidth="378.0" />
+      <Label layoutX="128.0" layoutY="162.0" prefHeight="18.0" prefWidth="182.0" text="This Photo's Caption:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="191.0" prefHeight="26.0" prefWidth="182.0" text="This Photo's Date:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

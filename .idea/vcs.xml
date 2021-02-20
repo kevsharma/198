@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/198/cs211/PA1/autograder/hw1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs211/PA1/experimental1/autograder/hw1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs211/PA3/cs211hw3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs211/ilabToUbuntu" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs213/chess53" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs213/photos53" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/cs213/songlib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/198/ds112projects" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ds_implementations" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/twitterproj/Kev-Twitter-Bot" vcs="Git" />
+  </component>
+</project>

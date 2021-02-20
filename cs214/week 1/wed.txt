@@ -1,0 +1,158 @@
+CS214 / 2021-01-20
+=================
+
+Professor Menendez
+davemm@cs.rutgers.edu
+
+Please include [CS214] in the subject line of any e-mails - this makes it easier for me to find.
+
+Office Hours
+Tuesdays and Thursday, 2pm - 4pm
+
+No recitations this week
+There will be an announcement when recitations begin.
+
+---
+
+Lecture videos will be linked from sakai
+Password will be 'CS214spring"
+	feel free to share links to recordings.
+	
+---
+
+Textbook
+Computer Systems: A Programmer's Perspective
+   - good book (not required)
+   
+Reference for C recommended
+Links to books freely avaiable on-line will be posted on Sakai.
+
+---
+
+Systems Programming
+- introduction to low-level 'system' programming
+- introduction to os, file system, networking, multi-threading, etc.
+
+- 4 Programming projects -> hard programming | cheating severely punished
+- Late hand-ins will not be accepted.
+
+
+Reccomended for both partners to submit.
+Submit often! Last submission will be graded.
+
+Detailed assignment writeups clarify specifications -> MUST BE ON TIME
+
+---
+
+You get exactly the grade that your assessments determine. If you want a good grade, the best approach is to take the course seriously from day one.
+
+No midterm exam
+instead: quizzes and short homework assignments (both add up to 25%)
+
+There will be a final - 25%
+	-> it will be given on-line through Sakai
+
+Programming assignments (different from homework assignments) -> 50%
+
+---
+
+The Instructional Labs (iLabs) will be our reference systems
+- projects will be tested on these machines, using the installed C compiler.
+
+Try not to use a busy device -> check using web page.
+
+
+	ssh netid@machine_name.cs.rutgers.edu
+
+Copy from remote to local ->
+	scp user@host:remote_path local_path
+
+Copy from local to remove
+	scp local_path user@host:remote_path
+	
+	
+----
+
+Using the forum and asking questions => Using Piazza
+-> please don't post code from projects/hw | please be respectful of others
+-> feel fre to ask questions about class + assignments, and answer provided you know the answer
+
+---
+
+You are free to use whatever programming editors you like
+- vim, emacs, are avaiable on iLab.
+- you can use whatever you like your own device
+
+- suggestions: find a good programming tool (that you like)
+	 - find a good programming font. 
+	 
+
+---
+
+C compiles to machine code <- runs directly on the hardware
+C provides a lot of control to the progrmamer
+	-> memory allocation
+	-> memory layout
+	-> in-line assembly
+
+C requires a lot of control from the programmer
+	-> clean up after yourself
+	-> avoid undefined behavior
+	-> avoid error conditions -- don't forget to check for errors!
+
+
+C shows us a simple model of what is happening in the computer.
+
+Many low-level OS, threading, and networking interfaces were first written to be used with C.
+C has fewer distracting features than Java or C++.
+
+We are going to learn about pointers, objects, functions, function pointers, threads, arrays, sockets, file descriptors, manual memory management, and more.
+
+In java, we write Java source code
+		javac compiles this to Java "byte code"
+		java executes the Java byte code and runs our program
+		java itself is written in another language and runs on the processor
+
+In C, we write C source code:
+		gcc (or clang, icc, etc.) compiles program to machine lnaguage 
+		machine language program is executed by processor.
+		
+CS:APP has steps on how to do this. Read them.
+
+
+Compiling process:
+	C source code
+	-- compiles to -> assembly
+	-- assembly to -> machine code
+	-- executed by -> CPU
+	
+---
+
+Types
+
+e.g., int, float, char
+C provides several "primitive" types
+
+integer-like types: int, char, long int, short int, unsigned int, unsigned long int, etc. 
+
+	char is just an integer that takes a single byte
+	differences between integer types:
+		sizes: char < short <= int <= long
+		signed = can have negative. unsigned = must be positive.
+
+floating-point types: float, double, long double
+
+pointers -> more on these later.
+
+
+
+
+
+
+
+
+
+
+
+
+

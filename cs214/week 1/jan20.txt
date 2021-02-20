@@ -1,0 +1,140 @@
+CS 214 NOTES
+
+Professor Email:
+	davemm@cs.rutgers.edu
+	
+	- Please include [CS214] in the subject line of any emails
+		- makes it easier for him to find
+
+Office Hours:
+	Tuesday & Thursday, 2-4pm
+
+Lecture Videos:
+	linked in sakai, PASSWORD WILL BE "CS214spring"
+	feel free to share links to recordings
+
+Textbook
+	Computer Science: A Programmer's Perspective
+		- good book, NOT REQUIRED
+
+Reference for C Reccomended
+Links to books freely available on-line will be posted to Sakai
+
+
+Systems Programming
+	- intro to low level system programming
+	- intro to OS, file system, networking, multi-threading, etc.
+
+!!!THIS IS A PROGRAMING HEAVY COURSE!!!
+
+we will be doing 4 programming projects
+	these will be two-person group projects
+	you CAN work by yourself, but it will be twice as much work
+
+You will also need a C compiler, SPECIFICALLY GCC
+	- we will be using the C 1999 standard
+	- you will NOT be expected to know C from the start
+
+YOU WILL WORK HARD CONSISTANTLY IN THIS COURSE
+THIS IS HARDER THAN COMPUTER ARCHITECTURE
+CHEATING WILL BE PUNISHED SEVERELY
+Types of assignments:
+	- 1: introduction project
+	- 2: memory management project
+	- 3: multithreading projec
+	- 4: networking project
+
+YOU CAN WRITE YOUR CODE WHERVER AND HOWEVER BUT IT MUST COMPILE ON THE ILAB MACHINES
+you can look at your PARTNER'S code and nothing else basically.
+YOU CAN USE GITHUB BUT USE YOUR REPOSITORY TO PRIVATE
+
+GRADING:
+	- late hand-ins will not be accepted.
+	- we will close the turn-in at the appointed time
+	- ask questions early and often
+	- we will grade the LATEST submission
+	- it is reccomended that BOTH PARTNERS SUBMIT
+	- "if you get hit by a truck and ur in a hospital or if you cant speak contact me or have your attourny contact me"
+	- OMG THERES A CURVE LETS GOOOOO
+	- NO MIDTERM EXAMS -> midterm replacement is just a bunch of quizzes and some homework assignments
+		- they last like 20 minutes
+	- there WILL be a final exam, ONLY WORTH 25% OF UR GRADE POG
+	- hopefully there will be a bunch of really short homeworks
+	
+bruh he literally said proctortrack is spyware. DAVID KNOWS WHATS UP YO B)
+
+TO LOGIN TO ILABS:
+	on mac/linux:
+		ssh netid@java.cs.rutgers.edu
+		ssh user@host   <---- this is just generally how u ssh
+	on windows:
+		get putty and connect with that
+
+Your final file submissions should be in the format:
+	project.c  <--- text file with ".c" extension
+
+This course will be using C. Why?
+	- we assume you have worked with java (cs111, cs112)
+	- java is descended from C (via c++)
+		- you have already seen C-like code
+		- you are somewhat familiar with C syntax and layout
+	- why not use java?
+		- java is not appropriate for systems programming
+		- java relies on an interpreter (jvm), which cannot itself be written in java
+
+C compiles to machine code <- runs directly on the hardware
+C provides a lot of control to the programmer
+	-> memory allocation
+	-> memory layout
+	-> in-line assembly
+C requires a lot of control from the programmer
+	-> clean up after yourself
+	-> avoid undefined behavior
+	-> avoid error conditions -- dont forget to check for errors!
+
+C shows us a simple model of what is happening in the computer.
+
+Many low-level OS, threading, and networking interfaces were first written to be used with C.
+C has fewer distracting features than Java or C++.
+
+We are going to learn about pointers, objects, functions, function pointers, threads, arrays, sockets, file descriptors, manual memory management, and more.
+
+In java, we write Java source code
+		javac compiles this to Java "byte code"
+		java executes the Java byte code and runs our program
+		java itself is written in another language and runs on the processor
+
+In C, we write C source code:
+		gcc (or clang, icc, etc.) compiles program to machine lnaguage 
+		machine language program is executed by processor.
+		
+CS:APP has steps on how to do this. Read them.
+
+
+Compiling process:
+	C source code
+	-- compiles to -> assembly
+	-- assembly to -> machine code
+	-- executed by -> CPU
+	
+---
+
+Types
+
+e.g., int, float, char
+C provides several "primitive" types
+
+integer-like types: int, char, long int, short int, unsigned int, unsigned long int, etc. 
+
+	char is just an integer that takes a single byte
+	differences between integer types:
+		sizes: char < short <= int <= long
+		signed = can have negative. unsigned = must be positive.
+
+floating-point types: float, double, long double
+
+pointers -> more on these later.
+
+
+
+notes taken by xX_**420VYRISMAN691337420**_Xx & sparrow :)

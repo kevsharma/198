@@ -1,0 +1,20 @@
+1) D does not extend Comparable, and doesn't get its methods, thus this will not compile.
+
+2) No for the same reason as above
+
+3) Yes
+
+4) No
+
+5) No
+
+6) Yes, the method signatures for stuff() are diff
+
+7) Yes, meets all requirements? but what the requirements?
+
+8) Yes, each Y is an X and Y implicitly implements
+
+9) No, there is no compareTo(X o) method in Z, and Z doens't extend X so no implicit either
+
+10) Yes, X implicitly implements compareTo(x o) by virtue of inheriting that method
+

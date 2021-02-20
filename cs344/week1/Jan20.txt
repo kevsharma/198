@@ -1,0 +1,32 @@
+January 20th, first week of class:
+
+Code: The actual code is the algorithm translated into machine language. For all but the simplest problems, we always first design the algorithm, and only then think about how to implement that algorithm in a particular language.
+
+Did a problem from Google's youtube about finding the indices of two elements that sum to a target in a sorted array. Went from naieve algo to optimal algo. Optimal -> O(n): left and right, while(left < right) manipulate them or return the sum.
+
+Analyzing an Algorithm
+---------------------
+Two main criteria:
+1) Correctness: the algorithm must produce a correct output for any input.
+2) Running time: how fast is the algorithm?
+
+Question: How do we analyze the running time?
+
+We want a way to measure the running time of the algo itself, without having to write code. 
+-> We can't use Clock running time, since our clock speed depends on outside factors: implementation language, hardware, most importantly -> input into the program. 
+-> So we can't use Clock running time.
+
+-> Hence we will always use Algorithmic running time:
+	-> Think of your procedure: count how many basic operations it takes.
+	-> 1) Basic ops: arithmetic, memory access, etc.
+	-> 2) Consider the worst case scenario. The point of an algorithm is to specify at most how long it will take. 
+	-> 3) In general, we only care about large n. It is trivial to consider constants and non-leading coefficients. Hence the emphasis is on how well the algorithm scales. 
+	-> 4) Ignore constants.
+	-> Side: Heuristic algorithms might be very slow in theory but with real world input, they may be very fast. We consider worst case because it's the absolute guaranteed worst case. 
+
+Main takeaway: When giving a problem to solve, the first step is to design an algorithm with small algorithmic running time. The goal of this course is to teach you how to design such algorithms. 
+
+Prereqs: induction, log rules, proof-writing. 
+Hw: can collaborate! -- only people in the course. (Have to write solution on your own though). Two lowest HW scores can be dropped.
+
+We can maintain a library of 344 material covered. You can always, on hw, use the library to state how you skipped a particular step. Just put in the {}.  

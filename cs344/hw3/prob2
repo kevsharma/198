@@ -1,0 +1,19 @@
+
+Problem 4 part 2:
+
+FindSpecial (A)
+
+	n = A.length
+	
+	median = Select(A, floor(n/2))
+	A1,A2 = Partition(A,median) // note that median is not included in either array
+	
+	itsInverseRank = n+1-floor(n/2)
+	if A[median] == itsInverseRank
+		return A[median]
+	
+	else if A[median] > itsInverseRank
+		return FindSpecial(A1)
+		
+	else
+		return FindSpecial(A2)

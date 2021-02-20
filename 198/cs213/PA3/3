@@ -1,0 +1,7 @@
+Comparator can compare objects of different classes.
+
+For example both of the objects can be statically typed to the same class but dynamically typed to different things.
+
+Thus even though they have different runtime types, they can be compared using comparator.
+
+If we tried that using comparable then we should have a runtime error as the dynamic types would differ.

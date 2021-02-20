@@ -1,0 +1,266 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage[shortlabels]{enumitem}
+\usepackage{algpseudocodex}
+\usepackage{algorithmicx}
+\usepackage{graphicx}
+\pagestyle{fancy}
+
+
+\title{01:198:344 - Homework III}
+\author{Kev Sharma - kks107, Section 08}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \lhead{CS344-Homework III}
+    \chead{Kev Sharma - Section 08}
+    \rhead{NetID: kks107}
+    \begin{enumerate}
+        \item
+        \begin{algorithmic} [1]
+        	\Procedure{$n$smallest}{n Arrays}
+            	\State $heap \gets $ new MinHeap
+        		\Comment{$\mathcal{O}(1)$}
+        		\vspace{0.2cm}
+        		\For{$i=1 \dots, n$}
+        		    \LComment{Populates the heap. Does $\mathcal{O}(log(n))$ work per iteration.}
+        			\State $pair \gets (A_i[0], (A_i,0))$        		\Comment{$\mathcal{O}(1)$}
+        			\State $heap$.add($pair$)
+        			\Comment{$\mathcal{O}(log(n))$}
+        		\EndFor
+        	    \vspace{0.2cm}
+        		\State $result \gets $ new Array of size $n$
+                \State $indexResult \gets 0$
+                \vspace{0.2cm}
+                \While{$indexResult < n-1$}
+                    \LComment{Find n-1 smallest elements among all arrays. Populates the first n-1 elements in result. Explanation found in correctness analysis.}
+                    \LComment{Get smallest item from heap and its metadata. Populate result.}
+                    \State $pair \gets heap$.find-min()
+                    \Comment{$\mathcal{O}(1)$}
+                    \State $result[indexResult] \gets$ $pair$.key
+        		    \State $indexResult \gets indexResult+1$
+        		    \LComment{Replace smallest element. For the element that we remove, insert its successor from that same array into heap.}
+        		    \State $heap$.delete-min()
+        		    \Comment{$\mathcal{O}(log(n))$}
+        		    
+        		    \State $arrayOfMin \gets pair$.value.array
+        		    \State $successor \gets pair$.value.index+1
+        		    \State $pair \gets (arrayOfMin[successor], (arrayOfMin, successor))$
+        			\State $heap$.add($pair$)
+        		    \Comment{$\mathcal{O}(log(n))$}
+        		\EndWhile
+        		\State $pair \gets heap$.find-min()
+        		\Comment{$\mathcal{O}(log(n))$}
+        		\State $result[indexResult] \gets$ $pair$.key
+        		\Comment{$\mathcal{O}(1)$, populates nth element in result.}
+        		\State return $result$
+        	\EndProcedure
+        \end{algorithmic}
+        \textbf{Run-time Analysis:} 
+            \begin{itemize}
+                \item Each heap operation is commented to include its run-time as discussed in class. 
+                \item The first for loop does $c*log(n)$ work per iteration. Hence we have $n * c*log(n)$ work which equals $\mathcal{O}(nlog(n))$ work. The while loop also does $c*log(n)$ work per iteration for $n-1$ iterations. Hence we have $(n-1) * c*log(n)$ work for the second loop = $\mathcal{O}(nlog(n))$. Line 22 takes $\mathcal{O}(log(n))$ time.
+                \item In total, our run-time is $2*\mathcal{O}(nlog(n) + \mathcal{O}(log(n))$ = $\mathcal{O}(nlog(n))$.
+            \end{itemize} 
+        \vskip 0.5cm
+        \textbf{Correctness Analysis:}
+            \begin{itemize}
+                \item We populate $heap$ with the smallest elements from each array passed to us. Note that these elements will each occur at index zero of their respective arrays.
+                \item Likewise, each (key,value) $pair$ inserted into the heap will contain the smallest element of an array as the key and metadata on where that key comes from in the value.
+                \item The value is a two-tuple of the form (array from where key originates, index of key in said array). $heap$ compares pair.key for adding and removing. $heap$ only ever maintains a maximum of n elements after the for loop on line 3 terminates (one item in $heap$ per array passed).
+                \item The repeat-until loop uses the populated $heap$ from the for loop to get the minimum element from all arrays (min of $heap$) and then replaces it in the heap so that there are always $n$ items in the heap where each item represents the smallest element from each array that has not already been added to $result$.
+                \item We refresh the heap with a successor element using the metadata that $pair$ stores about the minimum element on line 12. If $pair$ is (3, ($A_5, 2$)), then we know the smallest item not in $result$ already is the value 3 from the fifth array at index 2 in that array (indexing starts with 0). 
+                \item We populate the last element in $result$ outside the repeat loop because it could be the case that some array x contains the $n$ minimum elements desired. Hence if we iterated $n$ times in the repeat-loop in this case, line 19 would access the $nth+1$ element in x. This could cause a stack overflow error.
+                \item The repeat loop terminates after we initialize the first $n-2$ entries in $B$. Line 23 then initializes the last (index $n-1$) entry in $B$. 
+            \end{itemize} 
+        \newpage
+        \item
+        \begin{algorithmic} [1]
+        	\Procedure{LongestSerialSubsequence}{A}
+            	\State $longest \gets 1$
+                \State $D \gets $ new $Dictionary$
+        		\For{$i=0 \dots, n-1$}
+        			\State $value \gets D.search(A[i] - 1)$
+        			\Comment{$Dictionary.search = \mathcal{O}(1)$}
+        			\If{$value != NIL$}
+        				\State $D.add(A[i], value+1)$
+        				\Comment{$Dictionary.add = \mathcal{O}(1)$}
+        				\State $longest \gets max(longest, value+1)$
+        			\Else
+        				\State $D.add(A[i], 1)$
+        				\Comment{$Dictionary.add = \mathcal{O}(1)$}
+        			\EndIf
+        		\EndFor
+        		\State return $longest$
+        	\EndProcedure
+        \end{algorithmic}
+        \vskip 0.5cm
+        \textbf{Run-time Analysis:}
+            \begin{itemize}
+                \item Lines 5 and 7 or 10, where we perform operations on dictionary $D$ each take $\mathcal{O}(1)$ time.
+                \item The remaining statements inside the for loop take constant time as well.
+                \item There are $n$ iterations of the for loop [0,n-1] and we perform a constant amount of work on each iteration.
+                \item Hence the running time is equal to $c*n = \mathcal{O}(n)$
+            \end{itemize}
+        \vskip 0.5cm
+        \textbf{Correctness Analysis:}
+            \begin{itemize}
+                \item Fact 1: Since A contains distinct numbers, an element  ($A[i]$) that has not been iterated over by $i$ will not be in the dictionary $D$. We add $A[i]$ as a key to the dictionary on every iteration, either on line 7 or on line 10 but not on both.
+                \item Because we know that Fact 1 is true, we can conclude on the current $i$, $A[i]$ has a direct predecessor only if the dictionary contains the key $A[i]-1$ (line 6). 
+                \item Since we cannot do multiple checks on iteration $i$ checking whether $A[i]-2$, $A[i]-3$, $A[i]-4$ (and so on) exist in the Dictionary, we need to let the key referenced by $A[i]-1$ tell us whether it had found its first predecessor in $A$. 
+                \item Thus our (key, value) pair is of the form (element, length of serial sub-sequence in $A$ ending with that element). 
+                \item Hence if an element $b$ is found that is a direct successor to $a$ (where $b$ appears after $a$ in $A$), then we know that key $b$'s value can be set to key $a$'s value incremented by one. This is possible because now we've extended the length of the sub-sequence ending with $a$ to end with $b$, and so $b$'s value is $a$'s $value+1$. If $a$ did not exist in $A$, then $b$'s value can be set to 1. This logic is found in lines 5 through 10.
+                \item $longest$ keeps track of the greatest value we have ever assigned to any key in dictionary $D$. Consequently, after the for loop terminates, longest will contain the length of the longest serial sub-sequence in $A$. 
+            \end{itemize}
+        
+        
+        \newpage
+        \item
+        \begin{algorithmic} [1]
+        	\Procedure{NumberDistinctOver-$k$-Intervals}{$A, k$}
+            	\State $n \gets A.length$
+            	\State $B \gets $ empty array of size $n-k+1$ 
+            	\Comment{Output array}
+                \State $indexB \gets 0$
+                \Comment{Used to populate $B$}
+                \State $D \gets $ new $Dictionary$
+                \State $distinct \gets 0$
+                \LComment{$distinct$ will be used as a running tally of the number of distinct elements over the current interval, $distinct$ won't get reset after an interval ends.}
+        		
+        		\For{$i=0 \dots, n-1$}
+        		    \Comment{n iterations}
+        			\If{$i \ge k$}
+        			    \LComment{At the start of each new interval, append distinct to B to keep track of previous interval's num distinct elements.}
+        			    \State $B[indexB] \gets distinct$
+        			    \State $indexB \gets indexB+1$
+        			    \LComment{At the start of each interval, remove the previous interval's first element from that dict if it only appeared once otherwise reduce it's value by one. }
+        			    \State $value \gets D.search(A[i-k])$
+        			    \Comment{$\mathcal{O}(1)$}
+        			    \If{$value == 1$}
+        			        \State $D.remove(A[i-k])$
+        			        \Comment{$\mathcal{O}(1)$}
+        			        \State $distinct \gets distinct -1$
+        			    \Else
+        			        \State $D.update(A[i-k], value-1)$
+        			        \Comment{$\mathcal{O}(1)$}
+        			    \EndIf
+    			    \EndIf
+    			    \LComment{For the current i, increment distinct iff the key A[i] doesn't exist in dict. This ensures we count only the distinct elements in that interval once. If A[i] does exist, increment it's value in D to reflect that it appears that many times in the current interval.}
+    			    \If{$D.search(A[i])!=NIL$}
+    			        \State $D.update(A[i], D.search(A[i])+1)$
+    			        \Comment{$\mathcal{O}(1)$}
+    			    \Else
+    			        \State $distinct \gets distinct+1$
+    			        \State $D.add(A[i], 1)$
+    			        \Comment{$\mathcal{O}(1)$}
+        			\EndIf
+        		\EndFor
+        		\LComment{The last interval terminates together with the for loop, so we cannot reach line 11 to update B[indexB] for the last interval. So updating it manually for the last interval is necessary, otherwise the last element of B (representing the number of distinct elements in the last interval of A of size k) remains unpopulated.}
+        		\State $B[indexB] \gets distinct$
+        		\State return $B$
+        	\EndProcedure
+        \end{algorithmic}
+        \vskip 0.3cm
+        \textbf{Run-time Analysis:} All dictionary calls are labeled in the for loop. Observe that we do a constant amount of work per iteration. Since there are n iterations, we do $c*n$ amounts of work. $\therefore$ our algorithm runs in $\mathcal{O}(n)$ time.
+        \vskip 0.5cm
+        \textbf{Correctness Analysis:}
+        \begin{itemize}
+            \item Technically since the prompt doesn't ask for justification, you may skip this correctness analysis. However, I've included it to explain the algorithm (though the comments in the pseudocode should suffice). 
+            \item This algorithm works by using a dictionary to dictate what happens to $distinct$. 
+            \item Line 2 is used to iterate over all elements in the for loop.
+            \item B is the output array. The size of B is equal to the number of $k$ sized intervals found in A. Note that $k \ge 1$. Each entry in B stores the number of distinct elements in that respective interval. For example, the first entry in B (indexed at 0) stores the number of distinct elements in the first interval. Line 4, $indexB$, is used to populate B accordingly. 
+            \item Because the first interval ends after $k$ iterations are complete (and because indexing starts at 0), $B[0]$ should be populated as $distinct$ at the start of the next iteration, namely when the value of $i$ becomes $k$ (since $|0\dots k-1|$ = k).
+            \item From then on, each value $i$ takes on in the for loop will mark the end of another iteration. This can be viewed as a sliding window. If the first iteration is from $i=0 \dots k-1$, then the next iteration is from $i=1 \dots k$. Thus, we must populate B at each iteration after $k$ iterations are complete. 
+            \item Having explained the use of line 9, let us detour to line 21-25 before coming back to the body of the if statement on line 9. 
+            \item For the first iteration, line 21 will evaluate to false, and so $distinct \gets distinct+1$ is justified $A[i]$ was not a key in $D$ (trivial since $D$ was empty at start). For any following iterations, however, line 21 may evaluate to true. If it does, we know that we have already counted that $A[i]$ in our tally $distinct$. To avoid a recount, we simply update $A[i]$'s value in $D$ (see line 20). 
+            \item If, on any iteration, $A[i]$ is not a key in $D$, then we know that the element $A[i]$ is distinct in that interval and can fall through to lines 24 and 25. 
+            \item Returning back to our if block on line 9, shifting our figurative window of size $k$ to the right by one element, means we must append to B the number of distinct elements the window previously encapsulated. This is done on lines 11-12. 
+            \item Since our window has moved to include a new element, but $distinct$ may still be affected by the first element of the previous interval, we must alter $distinct$ accordingly.
+            \item To alter $distinct$, we only wish to change the impact the first element of the previous interval had on the tally. The remaining $k-1$ elements' contribution should remain the same because we will later (lines 21-25) contribute the current iteration's impact on the tally (if it isn't a duplicate). 
+            \item Lines 15 through 19 contain the logic to alter $distinct$ depending on whether the first element of the previous interval had a duplicate in that interval or not. 
+            \item In the input example of [3,2,7,3,...] where $k=4$, the first element of the interval did contain a duplicate. Hence $D$ would contain the (key,value) pair (3,2). We cannot remove the key entirely, since the remaining $k-1$ elements [3,\textbf{2,7,3}] contains a three. Because this is the case, $distinct$ should remain unchanged one element in the remaining $k-1$ elements forming the first $k-1$ of the second interval contains a three.
+            \item However, if the first element of the previous interval did not have any repeats, i.e $D.search(A[i-k])$ returned 1, then we can take one away from distinct as the new interval does not contain that element. We can also remove that element as a key from $D$.
+            \item \includegraphics[width=11cm, height=6cm]{image2.png}
+            \item The algorithm, when ran on prompt's input example (with $k=4$, gives the above output. $D$ is on the right hand side and shows all key,value pairs.
+            \item Note that lines 21 through 25 need to be accounted for even after the last iteration since they have computed $distinct$ for the last interval. So when our loop terminates and we cannot reach the if block on line 9, we need to manually initialize the last element of B (equivalently, the number of distinct elements in the last interval of A of size $k$). We do this on line 27.
+        \end{itemize}
+        
+        
+        \newpage
+        \item
+        \begin{algorithmic} [1]
+            \Procedure{SpecialPart1}{A}
+                \State $sort(A)$
+                \Comment{$\mathcal{O}(nlog(n))$}
+                \State $i \gets n$
+                \While{$i\ge 1$}
+                    \If{$A[i]==(n+1-i)$}
+                        \State return $A[i]$
+                    \EndIf
+                    \State $i \gets i-1$
+                \EndWhile
+                \State return ``no solution"
+            \EndProcedure
+            \LComment{Part 1 has a run-time of $\mathcal{O}(nlog(n))$ to sort and $\mathcal{O}(n)$ to iterate over sorted $A$. So this first procedure has a run-time of $\mathcal{O}(nlog(n))$}
+        \end{algorithmic}
+        \vskip 1cm
+        \begin{algorithmic} [1]
+            \Procedure{SpecialPart2}{A}
+
+            \EndProcedure
+        \end{algorithmic}
+        \newpage
+        \item
+        \begin{algorithmic}[1]
+            \Procedure{extraCredit}{A}
+                \vskip 0.3 cm
+                \State $n \gets A.length$
+                \vskip 0.3 cm
+                \State $total \gets 0$
+                \State $D \gets$ new $Dictionary(int, int)$
+                \vskip 0.5cm
+                \For{$x=0, \dots, n-1$}
+                    \Comment{n iterations}
+                    \State $total \gets total + A[x]$
+                    \If{$total == 100$}
+                        \State return $(0,x)$
+                    \EndIf
+                    \vskip 0.3 cm
+                    \State $value \gets D.search(total - 100)$
+                    \Comment{$Dictionary.search = \mathcal{O}(1)$}
+                    \vskip 0.3 cm
+                    \If{$value$ $!= NIL$}
+                        \State return $(value+1, x)$
+                    \EndIf
+                    \vskip 0.3 cm
+                    \State $D.add(total, x)$
+                    \Comment{$Dictionary.add = \mathcal{O}(1)$}
+                \EndFor
+                \vskip 0.3cm
+                \State return ``no solution"
+            \EndProcedure
+        \end{algorithmic}
+        \vskip 0.5cm
+       \textbf{Run-time Analysis:}
+        \begin{itemize}
+            \item It takes $\mathcal{O}(1)$ amount of time to create a, search for, and add to a Dictionary. Hence lines 4,9, and 12 all take constant time.
+            \item Because we do a $\mathcal{O}(1)$ work per iteration and there are exactly $n$ iterations, we do a total of $n * \mathcal{O}(1)$ of work.
+            \item$\therefore$ the running time of this algorithm comes out to be $\mathcal{O}(n)$.
+        \end{itemize}
+        \textbf{Correctness Analysis:}
+        \begin{itemize}
+            \item Note that a justification is not required by the prompt.
+            \item The dictionary $D$ stores the running total computed at each index (see line 12). It stores them as a (key,value) pair in the form of (total, index). 
+            \item On every iteration, it checks whether the running total has hit 100. If this is the case, then we have a solution (since running total spans from index zero to $x$) and can return $(0,x)$ where $x$ is guaranteed to be $\ge 0$.
+            \item Otherwise line 9-10 checks whether any previous total computed out to be (total - 100). If such a previous total was computed, it would've been stored (line 12).
+            \item previousTotal = total - 100
+            \item 100 = total - previousTotal
+            \item If the above equation can be satisfied with a previousTotal that exists in $D$, then we can say that elements from index $D.search(previousTotal) +1$ onwards up to current value of x sum to 100. $\therefore$ we are able to return $(value+1, x)$. 
+            \item If the conditions on line 7 and 10 never evaluate to true, we know there can't be a solution. And so we can safely fall through to line 13.
+        \end{itemize}
+    \end{enumerate}
+\end{document}

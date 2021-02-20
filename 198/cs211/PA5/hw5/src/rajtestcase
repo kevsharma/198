@@ -1,0 +1,6 @@
+read ax
+print ax
+div 2 ax
+print ax
+jle 7 ax 0
+jmp 3

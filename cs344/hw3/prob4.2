@@ -1,0 +1,41 @@
+
+Problem 4 part 2:
+
+problem4Part2(A)
+	if(A.length == 0)
+		return ``no solution"
+		
+	return FindSpecial(A, 0)
+
+			
+FindSpecial(A, offset)
+	n = A.length
+	
+	if(n == 1)
+		if(A[1] == n+offset)
+			return A[1]
+		else
+			return ``no solution"
+	
+	median = Select(A, floor(n/2)) //O(n)
+	A1,A2 = Partition(A,median) // O(n) note that median is not included in either array
+	
+	medianInverseRank = n+1-floor(n/2) + offset
+	
+	if median == medianInverseRank
+		return median
+			
+	else if median > medianInverseRank
+		return FindSpecial(A1,medianInverseRank+floor(n/2))
+		
+	else
+		return FindSpecial(A2, medianInverseRank)
+		
+		
+Why we can divide & why we need to use offset
+
+Base Case and why its there
+
+
+
+

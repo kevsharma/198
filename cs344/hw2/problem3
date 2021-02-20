@@ -1,0 +1,48 @@
+Find maj:
+0) address base case
+1) determine the divisions
+2) send into divisions
+3) compare
+4) return result from comparison
+
+// input: an array A of incomparable objects
+// output: the element that occurs 2/3 of the time or no solution if none
+
+PROCEDURE findMaj(A[1...n]):
+	
+	n <- A.length 
+	
+	if n == 0:
+		return 'no solution'
+	
+	else if n == 1:
+		return A[1]
+
+
+	lower <- floor(n/3)
+	upper <- ceil(n/3)
+	
+	
+	if (2*lower + 1*upper) == n:
+		first  <- findMaj(A[1...lower])
+		second <- findMaj(A[lower+1...2*lower])
+		third  <- findMaj(A[2*lower+1...n])
+	
+	else:
+		first  <- findMaj(A[1...upper])
+		second <- findMaj(A[upper+1...2*upper])
+		third  <- findMaj(A[2*upper+1...n]) 
+	
+	
+	if first == second || first == third:
+		return first
+	
+	else if second == first || second == third:
+		return second
+	
+	else if third == first || third == second:
+		return third
+	
+	return 'no solution'
+
+END PROCEDURE

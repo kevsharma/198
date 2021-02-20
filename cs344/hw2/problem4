@@ -1,0 +1,118 @@
+
+Problem 4:
+Part 1
+---------
+
+// Output: the length of the longest strictly increasing subarray (LSIS
+PROCEDURE length_LSIS(A[1...n]):
+	
+	if A.length == 0:
+		return 0;
+
+	else if A.length == 1:
+		return A[1];
+	
+	n <- A.length
+	
+	left <- length_LSIS(A[1...n/2])
+	right <- length_LSIS(A[(n/2)+1...n])
+	
+	center <- central_LSIS(A, n/2)
+	
+	return max(left,right,center)
+	
+
+END PROCEDURE
+
+
+// input array A, index k
+
+PROCEDURE central_LSIS(A[1...n], k):
+
+	leftPortion <- 0
+	rightPortion <- 0
+	
+	for i=k to i=2:
+		if A[i] > A[i-1]:
+			++leftPortion
+		else:
+			break
+	
+	for i=k to i=n-1:
+		if A[i] < A[i+1]:
+			++rightPotion
+		else:
+			break;
+		
+	return (leftPortion + rightPortion + 1)
+
+END PROCEDURE
+
+
+
+
+
+
+==================
+
+
+
+Part 2:
+--------
+
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        if(nums.length == 0)
+            return 0;
+        
+        return findMaxLen(nums, 0, nums.length-1).maxLen;
+    }
+    
+    public Info findMaxLen(int[] A, int lo, int hi){
+        if(lo == hi)
+            return new Info(1,1,1);
+        
+        int mid = lo + (hi - lo)/2;
+        
+        Info left = findMaxLen(A, lo, mid);
+        Info right = findMaxLen(A, mid+1, hi);
+        
+        // Need to compute center.
+        int centerMaxLen = 0;
+        if(A[mid] < A[mid+1]){
+            centerMaxLen = left.suffix + right.prefix;
+        }
+        
+        // prefix:
+        int prefix = left.prefix;
+        if(A[mid] < A[mid+1] && prefix == mid+1-lo){
+            prefix += right.prefix;
+        }
+        
+        // suffix:
+        int suffix = right.suffix;
+        if(A[mid] < A[mid+1] && suffix == hi-mid){
+            suffix += left.suffix;
+        }
+        
+        int result = left.maxLen > right.maxLen ? left.maxLen : right.maxLen; 
+        result = result > centerMaxLen ? result : centerMaxLen;
+        
+        Info toReturn = new Info(result, prefix, suffix);
+        return toReturn;
+    }
+    
+}
+
+
+class Info{
+    public int maxLen;
+    public int prefix;
+    public int suffix;
+    
+    public Info(int x, int y, int z){
+        maxLen = x; prefix = y; suffix = z;
+    }
+}
+
+

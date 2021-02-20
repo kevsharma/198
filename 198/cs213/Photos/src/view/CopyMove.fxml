@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Kev Sharma and Dhruti Shah -->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CopyOrMoveController">
+   <children>
+      <RadioButton fx:id="copy" layoutX="191.0" layoutY="59.0" mnemonicParsing="false" text="Copy">
+         <toggleGroup>
+            <ToggleGroup fx:id="group1" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="move" layoutX="280.0" layoutY="59.0" mnemonicParsing="false" text="Move" toggleGroup="$group1" />
+      <Button fx:id="ok" layoutX="291.0" layoutY="219.0" mnemonicParsing="false" onAction="#okPressed" text="OK" />
+      <Button fx:id="cancel" layoutX="219.0" layoutY="219.0" mnemonicParsing="false" onAction="#cancelPressed" text="Cancel" />
+      <Label layoutX="32.0" layoutY="95.0" prefHeight="16.0" prefWidth="146.0" text="To which album?" />
+      <Label layoutX="32.0" layoutY="21.0" prefHeight="30.0" prefWidth="337.0" text="Would you like to Copy or Move?">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="albumListView" layoutX="22.0" layoutY="127.0" prefHeight="137.0" prefWidth="153.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Kev Sharma and Dhruti Shah -->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TagSearchController">
+   <children>
+      <Button fx:id="logout" layoutX="500.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutPressed" text="Logout" />
+      <Button fx:id="cancel" layoutX="38.0" layoutY="317.0" mnemonicParsing="false" onAction="#cancelPressed" text="Cancel" />
+      <Button fx:id="ok" layoutX="458.0" layoutY="317.0" mnemonicParsing="false" onAction="#okPressed" text="Ok" />
+      <RadioButton fx:id="or" layoutX="301.0" layoutY="231.0" mnemonicParsing="false" text="Must have either Tag 1 or Tag 2">
+         <toggleGroup>
+            <ToggleGroup fx:id="choice" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="regular" layoutX="301.0" layoutY="166.0" mnemonicParsing="false" text="Must have Tag 1" toggleGroup="$choice" />
+      <RadioButton fx:id="and" layoutX="301.0" layoutY="200.0" mnemonicParsing="false" text="Must have both Tag 1 and Tag 2" toggleGroup="$choice" />
+      <TextField fx:id="tag1name" layoutX="69.0" layoutY="101.0" promptText="Tag 1's Name" />
+      <TextField fx:id="tag1value" layoutX="69.0" layoutY="133.0" promptText="Tag 1's Value" />
+      <TextField fx:id="tag2name" layoutX="69.0" layoutY="205.0" promptText="Tag 2's Name" />
+      <TextField fx:id="tag2value" layoutX="69.0" layoutY="236.0" promptText="Tag 2's Value" />
+      <Label layoutX="32.0" layoutY="27.0" text="Search my Photos by tag(s)">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
