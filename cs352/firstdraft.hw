@@ -1,0 +1,62 @@
+352 hw1
+
+1. 5 layers from top to bottom:
+		- Application, Transport, Network, Link, Physical
+		
+2. Three Different Access Networks:
+		- Local Access Network
+		- Regional Access Network
+		- ? International Acess Network
+		
+3. Four sources of Packet Delay:
+	- nodal processing delay
+	- queuing delay
+	- transmission delay
+	- propogation delay
+	
+4. In a circuit-switched network, bandwith is reserved in the network core for the connection between two hosts and a packet must journey from host A to host B through the links where bandwidth was reserved
+
+
+5.  Two differences:
+	- Clients initiate a connection with the Server
+	- Server sends the resources, Client requests the resources
+	
+6. Centralized DNS Solution has two drawbacks:
+	- if all DNS queries were routed to a centralized DNS solution, - causes network congestion
+	- larger delays in queries routed to centralized DNS solution
+	
+7. Persistent HTTP reflects a connection that stays open after a Client requests from Server
+
+8. Three advantages of Content Distribution Networks are:
+	- lower latency or delay
+	- leads to less network congestion
+	- not sure of third.
+	
+9. dont know
+
+10. SMTP is push protocol, where as MAP is pull protocol
+
+11. 
+	i. 16. 4 connectsion from A to B, 4 from B to C, 4 from C to D, and 4 from D to A.
+	ii. 16
+	iii. Yes we can.
+		- 2 from A to B to C
+		- 2 from A to D to C
+		- that equals 4 from A to C
+		
+		- 2 from B to A to D
+		- 2 from B to C to D 
+		- that equals 4 from B to D
+		
+12. throughput = min {R_s, R_c, R}
+	^ probalby wrong
+	
+13. UDP from Transport layer, and perhaps FTP from application layer
+	
+14. sum from i=0 to n | RTT_i
+
+15. 
+	i.  RTT1 + ... + RTTn + 8 ( RTT_0)
+	ii. RTT1 + ... + RTTn + 2 ( RTT_0)
+	iii. idk yet.
+
