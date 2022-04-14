@@ -1,0 +1,45 @@
+
+// input a graph G and a source s
+Procedure 1.2Guarantee(G, s):
+
+	// find the negative weight edge (src, dest)
+	for each weighted edge (u,v) in G:		// O(|E|)
+		if w(u,v) < 0:
+			src  <- u
+			dest <- v
+		
+	
+	// w(src,dest) is found as negative
+	
+	dictionary nodePotentials = initialize new dictionary
+	for each vertex v in V:				// O(|V|)
+		nodePotentials.add(v, 0)
+	
+	nodePotentials.update(dest, w(src, dest))
+	
+	// note that all the nodePotentials of all vertices are 0 except for dest
+	// dest's node potential is the negative weight edge
+	
+	
+	Let G' be G
+	
+	for each edge weight (x,y) in G':			// O(|E|)
+		let w'(x,y) = w(x,y) + nodePotentials.get(x) - nodePotentials.get(y)
+	
+	
+	Run Dijkstra(G', s) and get all dist'(s,v)	// O(|E|*log(|V|))
+	
+	for each v exists in V:
+		set dist(s,v) = dist'(s,v) - nodePotentials.get(s) + nodePotentials.get(v) 
+	
+	return dist(s,v) for all vertices v in X
+-----------------------------------------------------
+Runtime: O(|E|) + O(|V|) + O(|E|) + O(|E|*log(|V|))
+	= O(|E|*log(|V|)
+	
+	
+	
+	
+	
+	
+	

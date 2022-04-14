@@ -1,0 +1,41 @@
+
+
+
+
+
+Now, say that your library contains a function Square(x), which given a
+number x with n digits computes the number x^2 in time O(n log(n)). Write
+pseudocode for a function Mult(x,y) that given two n digit numbers x and
+y computes x · y in time O(n log(n)). You will want to make use of the
+Square(x) function in your pseudocode.
+
+
+Procedure Mult(x,y)
+
+	z = x+y  // O(n+n) = O(n); len(z) = atmost n+1
+	z^2 = Square(z) // O((n+1)log(n+1)) = O(nlogn)
+			// len(z^2) atmost 2*(n+1) -> len(z^2) = 2n+2
+	
+	x^2 = Square(x) // O(nlogn); len(x^2) = atmost 2n
+	y^2 = Square(y) // O(nlogn); len(y^2) = atmost 2n
+	
+	sol = z^2 - x^2 // O((2n+2) + 2n) = O(4n+2) = O(n) 
+			// len(sol) atmost 2n+2
+			// it does not matter that sol may become negative.
+	
+	sol = sol - y^2 // O(2n+2 + 2n) = O(n)
+			// len(sol) at most 2n+2
+			// 2n+2 as len(sol) is a loose upperbound, we aren't concerned with accuracy here
+			
+	// sol equals z^2 - x^2 - y^2
+	
+	sol = sol/2  // O(len(sol)) O(2n+2) = O(n)
+	
+	// sol equals [z^2 - x^2 - y^2] / 2 = x*y
+	
+	return sol;	
+	
+Our algorithm did not ever exceed O(nlogn) time.
+	
+	
+	

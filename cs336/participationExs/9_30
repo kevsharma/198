@@ -1,0 +1,45 @@
+Kev Sharma - kks107 - SUBMITTER
+I discussed with my group members but my work may differ in names of variables and certain primaryKeys chosen.
+Michael Zhang - mz487
+Troy Chibbaro - tbc41
+Patrick McDonough - pim19
+--------------------------------------------------------------
+
+Employee ( ssn, Fname, Name, Minit, Sex, Address, Salary, Lname, Bdate,
+			primaryKey(ssn) ) 
+
+Department ( Name, Number, Locations, NumberOfEmployees,
+			primaryKey(Name, Number) )
+
+Project ( Name, Number, Location, 
+			primaryKey(Name, Number) )
+			
+
+Supervision ( Supervisor_SSN, Supervisee_SSN,
+			primaryKey (Supervisee_SSN),
+			foreignKey (Supervisee_SSN) references Employee,
+			foreignKey (Supervisor_SSN) references Employee )
+			
+Controls ( Project_Name, Project_Number, Department_Name, Department_Number,
+			primaryKey(Project_Name, Project_Number),
+			foreignKey (Project_Name, Project_Number) references Project,
+			foreignKey (Department_Name, Department_Number) references Department )
+
+Works_For ( ssn, Name, Number, 
+			primaryKey (ssn),
+			foreignKey (ssn) references Employee
+			foreignKey (Name, Number) references Department )
+			
+Manages  ( ssn, Name, Number, StartDate
+			primaryKey (Name, Number),
+			foreignKey (ssn) references Employee
+			foreignKey (Name, Number) references Department )
+			
+Dependents_Of (ssn, Name, Sex, BirthDate, Relationship,
+				primaryKey ( ssn, Name ),
+				foreignKey (ssn) references Employee )
+
+Works_On ( ssn, Name, Number, Hours,
+			primaryKey (ssn, Name, Number), 
+			foreignKey (ssn) references Employee
+			foreignKey (Name, Number) references Project )

@@ -1,0 +1,52 @@
+Procedure Problem4:
+
+	topSort(G)
+	// now that V is now in topological order, let us index all the vertices for constant time lookup
+	
+	D <- new Dictionary
+	index = 0
+	for each vertex v in V:
+		D.add(v, index)
+		index <- index + 1	
+
+	if D.search(s) > D.search(t) 
+		return 0 // there is no way to get from s to t, since graph is dag
+
+	if D.search(s) = D.search(t)
+		return 1 // there is one way to get from s to t, dist(s,t) = 0, can't be more since acyclic graph
+
+	Initalize T[|V|][101]	
+
+	// Initialization
+	for i = 1 to n
+		for j = 0 to 100
+			T[i][j] = 0
+	
+	T[D.search(s)][0] = 1 // there is one path from s to s, using 0 edges.
+
+
+	// DP- relation
+	for i = (D.search(s) + 1) ... D.search(t)
+		for j = 0 to j = 99:
+			for all vertices x in In(V_i):
+				T[i][j+1] += T[D.search(x)][j]
+
+	
+	// we have computed the # paths of # edges from 0 to 100 for all vertices between s and t (inclusive) in V (which is top sorted)
+	
+	totalPaths <- 0
+	for j = 0 to 100
+		totalPaths += T[D.search(t)][j]
+
+	return totalPaths
+
+
+1. T[i][j] corresponds to the number of paths from s to v_i that use exactly j number of edges. T is of dimension n by 101. T's rows are indexed from 1 to n inclusive, and each row's columns are indexed from 0 to 100 inclusive. Please note that row k corresponds the vertex at index k in the topologically sorted set of vertices V.  A (key,value) pair for each (vertex, it's index in V) has been inserted into a Dictionary D to quickly look up indexes for arbitrary vertices (used in-neighbor lookups).  Calling D.search(s) for example, gives the index of s in V. Calling T[D.search(x)][k] gives the number of paths from s to x using exactly k edges.
+
+2.  T[i][j+1] = the sum of the number of paths from s to each in neighbor of v_i which use exactly j number of edges. Specificially for every in neighbor x of v_i, \sum k=0 to k=indegree(v_i) In(v_i), T[i][j+1] += T[D.search(x)][j].
+			
+3.  Every element in the table is initialized to 0. That is T[i][j] = 0 for all i,j.  T[D.search(s)][0] is then overwriten to be 1: there is one path from s to itself using 0 edges; this will be used as the base case to build off of using our DP relation. 
+
+4.  We return the number of paths from s to t using exactly 0,1,2,..., 100 edges as stored in our table.  By summing over each column of T[D.search(t)] and returning the sum, we can output the number of different paths from s to t that use any number of edges from 0 to 100 inclusive. 
+
+

@@ -1,0 +1,38 @@
+
+
+Procedure SubsetSumReds(S, B)
+	n $\gets |S|$
+	T $\gets$ 2D array [][]
+	// Intialize First row
+	
+	For col = 0 ... B:
+		T[0][col] = 101
+	
+	T[0][0] = 0
+	if(S[0] <= B): 
+		T[0][S[0]] = S[0].color == red ? 1 : 0
+	
+	// DP - relation: go from second row onward to last row (n-1). Traverse each column from 0 to B inclusive.
+		
+	for i=1 .... n-1
+		isRed = S[i].color == red ? 1 : 0
+		for j=0 ... B
+			T[i][j] = min( T[i-1][j]  ,  T[i-1][j-S[i]] + isRed )
+	
+	\State \Return T[n-1][B] $\le$ 100
+	
+	
+	 	
+DP Steps:
+
+1.  T[i][j] is an integer that corresponds to the number of red colored items it took to sum to j. 
+
+2. T[i][j] = min( T[i-1][j] , T[i-1][j-S[i]] + isRed ).
+
+	Note: isRed is valued at 1 if S[i].color is red and 0 if S[i].color is blue. If we use an existing subset which sums to j-S[i] and add S[i] to derive the minimum reds used to sum to j, we need to account for whether the current item is red (1) or blue (0).
+
+3. T[0][0] = 0. T[0][S[0]] = 1 or 0 depending on whether S[0] is red or blue respectively (only set if S[0] <= B). Every col from 1 to B that isn't S[0] is initialized to 101, that is T[0][col] = 101, where col != 0, S[0]
+	Row indexing goes from 0 to n-1 inclusive. Column indexing goes from 0 to B inclusive. 
+
+4. T[n-1][B] stores an integer reflecting the minimum number of reds used to sum to B after considering all items in set S. If this integer exceeds 100, we return false. Otherwise we return true. 
+	

@@ -1,0 +1,16 @@
+problem 1: part 1
+===============
+
+Table: row 2 is d(element in row 1) corresponding to when that vertex is explored. row 1 is the order in which the vertices are explored.
+
+		1		2		3		4		5		6		7
+ r1		s		a		e		d		c		f		b	
+ r2		0		3		4		7		8		9		14
+
+
+
+problem 2: part 2
+===============
+topological ordering #1:	f, a, d, b, c, g, e
+ 
+topological ordering #2:	f, a, d, b, c, e, g

@@ -1,0 +1,10 @@
+
+
+# Find the names of all students that have the maximum GPA of all the students in the database. (Those students have a GPA which is greater than or equal to the GPA of all students).
+
+
+SELECT S.name FROM Students S
+WHERE S.gpa >= ALL (
+	SELECT S.gpa FROM Students S
+);
+

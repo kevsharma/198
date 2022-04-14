@@ -1,0 +1,70 @@
+Problem 4
+----------
+
+Fancy Data Structure D:
+
+D.insert 		= O(log(n))
+D.delete-min() 		= O(log(n))
+D.decrease-key(v,k)	= O(1)
+
+
+Total Runtime = D.insert runtime * num times Dijkstra executes insert +
+		D.delete-min() * num times Dijkstra executes delete-min() +
+		D.decrease-key(v,k) * num times Dijkstra executes decrease-key(v,k)
+
+		= O(|V|*log(n)) + O(|V|*log(n)) + O(|E|)
+
+		= O(|V|*log(n)) + O(|E|)
+
+	note that n = |V|		
+
+Hence Fancy ds Dijkstra yields runtime of O(|V|log(|V|)) + O(|E|)
+
+=====================================================================
+Let Fancy dijkstra	= O(|V|log(|V|)) + O(|E|)
+And min-heap dijkstra	= O(|E|log(|V|)) 
+
+Recall	1. |E| is lower bounded by |V|.
+	2. |E| is upper bounded by |V|^2.
+	
+
+Case 1: Graph is sparse (extreme)
+------------------------------------------------
+then |E| roughly equals |V|
+Fancy dijkstra	= O(|V|log(|V|)) + O(|V|) 
+		= O(|V|log(|V|))
+		
+min-heap dijks 	= O(|V|log(|V|))
+
+When the graph is extremely sparse, both perform roughly the same.
+
+
+
+Case 2: Graph is dense (extreme)
+------------------------------------------------
+then |E| roughly equals |V|^2
+Fancy Dijkstra	= O(|V|log(|V|)) + O(|V|^2)
+		= O(|V|^2)
+
+min-heap dijk	= O(|V|^2 * log(|V|))
+
+When the graph is extremely dense, fancy dijkstra performs slightly better.
+
+
+
+Generally:
+--------------------
+fancy Dijkstra 	 = O(|V|log(|V|)) + O(|E|)
+		 < O(|V|log(|V|)) + O(|E|log(|V|))
+		<= O(|E|log(|V|))
+
+Fancy Dijkstra is upper bounded by min-heap dijkstra, 
+but min-heap dijkstra is not upper bounded by Fancy Dijkstra.
+Hence Fancy Dijkstra, for no edge-density, performs worse than min-heap dijkstra.
+
+So if we did have an implementation for Fancy Dijkstra, it would be preferable
+to use that implementation over the min-heap dijkstra variant.
+
+This is to be expected given we made one Dijkstra operation faster.
+
+

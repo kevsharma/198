@@ -1,0 +1,27 @@
+
+Let G.E refer to the set of edges for a graph G.
+Argue that: *For all* directed graphs G with cycles, when RemoveZeroDegree(G) terminates, |G.E| != 0.
+
+Proof by Contradiction:
+
+	Assume that there exists some directed *cyclic* graph P(V,E) such that 
+		1. |V|>=2 and |E|>=2 (hence P contains a cycle) 
+		2. AND that RemoveZeroDegree(P) yields |P.E| = 0.
+		
+	By definition of P being cyclic, P must contain at least two vertices x and y, such that x has a path to y and y has a path to x. 
+	
+	Hence P.V contains at least two vertices x and y such that, |In(x)| and |In(y)| is at least 1.
+	
+	When RemoveZeroDegree is ran on P, the while loop won't remove all edges in Out(x) and Out(y) since |In(x)| and |In(y)| are never 0. It would not be able to remove edges outgoing from y because x has an edge to y and vice versa.
+	
+	Hence after all vertices in P which are not in the path from x to y or y to x have their edges removed by the while loop, we are left with at least 2 unremoved edges.
+	
+	This contradicts our assumption 2.
+
+
+Because our initial assumption is logically false, we know that *there does not exist any* directed cyclic graph P such that assumptions 1 and 2 hold. 
+
+Therefore *for all* directed graphs G with cycles, when ReemoveZeroDegree(G) terminates, |G.E| != 0.
+	
+	  
+	

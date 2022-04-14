@@ -1,0 +1,54 @@
+
+
+
+
+create table Author (
+	author_id int unsigned auto_increment primary key,
+	author_name varchar(100) not null,
+	email varchar(100) not null,
+	unique(author_name, email)
+);
+
+create table Publisher (
+	publisher_id int unsigned auto_increment primary key,
+	publisher_name varchar(100) not null,
+	unique(publisher_name)
+);
+
+create table Book (
+	book_id int unsigned auto_increment primary key,
+	
+	title varchar(250),
+	
+	hardcover_isbn 			char(13) not null,
+	hardcover_publication_date	date not null,
+	hardcover_price 			smallint unsigned not null,
+	hardcover_copies_sold 		int unsigned not null,
+			
+	unique(hardcover_isbn)
+);
+
+create table bookauthors (
+	author_id  	int unsigned,
+	book_id  		int unsigned,
+	primary key (book_id, author_id),
+	foreign key (book_id) references Book(book_id),
+	foreign key (author_id) references Author(author_id)
+);
+
+create table additionalFormats (
+	book_id int unsigned,
+	publisher_id int unsigned,
+	
+	primary key (book_id, publisher_id),
+	
+	isbn 			char(13) not null,
+	publication_date 	date not null,
+	price 			smallint unsigned not null,
+	copies_sold		int unsigned not null,
+	format 			ENUM('hardcover', 'paperback', 'ebook', 'audiobook') not null,
+	
+	foreign key (book_id) references Book(book_id),
+	foreign key (publisher_id) references Publisher(publisher_id)
+);
+

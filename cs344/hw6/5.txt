@@ -1,0 +1,37 @@
+5. 
+
+let G be the graph that looks as followS:
+
+            0        0         0        0  
+	s -----> a -----> b ------>  c ----> t
+	|                            ^
+	|                            |
+	| 1                          |
+	|                            | -1
+	|     1         -1       -1  |
+	-> v------> x -----> y -----> z
+
+In this graph G, dist(s,t) = -1
+dist(s,t) derived by walking the path (s,v,x,y,z,c,t)
+
+------------------------------------------------------------
+
+let G' be the graph with w'(x,y) = w(x,y)+1 as Prof F. Lake suggests.
+G' looks as follows:
+
+            1        1        1          1  
+	s -----> a -----> b ------>  c ----> t
+	|                            ^
+	|                            |
+	| 2                          |
+	|                            | 0
+	|     2         0        0   |
+	-> v------> x -----> y -----> z
+	
+Running Dijkstra(G', s) shortest s-t path P as (s,a,b,c,t).
+w(P) is then equal to 0. But recall dist(s,t) = -1. 
+
+Hence for this graph G, Professor F. Lake's suggestion produces a path P in G' such that when you sum the weights of the edges in P, the sum exceeds dist(s,t).
+
+Here we show a graph G such that the shortest s-t path in G' is NOT the shortest s-t path in G.
+

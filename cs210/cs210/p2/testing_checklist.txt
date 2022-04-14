@@ -1,0 +1,69 @@
+CS210 Assignment 2 Testing Checklist
+
+Problem 1: Pokemon Box Dataset
+-pokemon.py is executable
+
+1)
+-Avoids division by zero if there are no fire type pokemons
+-The output percentage for 2/3 is 67
+-The output percengage for 5/6 is 83
+-The output percentage for 11/200 is 6, not 5
+
+2)
+-Correctly fills in the NaN values for type based on weakness
+-If there is a tie, the type that appears first alphabetically is filled in for missing value
+
+
+3)
+-For pokemon levels > 40, the average rounds to 1 decimal
+-For pokemon levels <= 40, the average rounds to 1 decimal
+-If there is only one level <=40 or only one level >40, NaN is not replaced with an average for any atk, hp, or dek in that row
+-If every atk, hp, or dek value is NaN, NaN is not replaced with an average
+
+
+4)
+-Each type has a personality mapped to it
+-Both keys and values are ordered alphabetically
+-Output csv file pokemon4.txt is correctly formatted
+
+5)
+-Average value is rounded off
+-If every stage is less than 3, NaN is returned for the output average
+-Output csv file pokemon5.txt is correctly formatted
+
+
+Problem 2: Covid-19 Dataset
+-covid.py is executable
+
+1)
+-The range (0-1) and (0-0) returns 0 as average
+-If input file has no ranges, the numbers are left as they are
+
+2)
+-If month and date are the same, the output is still correct
+
+3)
+-If there is only one province in the input file that has an NaN value for longitude and/or latitude, NaN is filled in for that value
+
+4)
+-If there is a tie, the city that comes first alphabetically is filled in
+-If there is only once province in the input file and it has an NaN value, NaN is returned
+
+5)
+-If a province appears once and has NaN for symptoms, NaN is returned
+-Frequencies are counted correctly for symptoms with both semicolon and spaces and for just semicolons
+
+Problem 3: Text Processing
+
+1)
+-Words ending with -ment,-ly, and -ing are stemmed
+-Url links, trailing and leading spaces are removed and all letters are lowercased
+-non-words and stopwords are removed
+-If tfidf_docs.txt has a new line, it is ignored
+
+
+2)
+-1 is added both if idf is 0 or non-zero
+-Average is rounded to two decimal places
+-The top five words returned are in alphabetical order
+-3 documents with 5 tuples are returned, if there are less than 5 of the top words, then all of the words are returned

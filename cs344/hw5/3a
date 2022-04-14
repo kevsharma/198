@@ -1,0 +1,75 @@
+3) Part 1
+
+Iteration | Exploring_vertex | (v in Out(exploring_vertex), d(v))
+--------------------------------------------------------------------
+
+1		s		[(z,3), (x,7)]
+
+2		z		[(x,7), (y, 8), (t,6)]	// d(z) is now dist(s,z) = 3
+
+3		t		[(x,7), (y, 8)] 	// d(t) is now dist(s,t) = 6, exploring t relaxed no edges
+
+4		x		[(y,8)]		// d(x) is now dist(s,x) = 7, exploring x relaxed no edges
+
+5		y		[ ]			// d(y) is now dist(s,y) = 8, exploring y relaxed no edges
+
+loop terminates
+
+
+3) Part 2
+
+Let G = (V,E,W)
+where
+	V = [s,a,b,p]
+	E = [(s,a), (s,b), (b,a), (a,p)]
+	W = [(s,a,50), (s,b,100), (b,a,-90), (a,p,200)] // the third item is the edge weight
+	
+The graph looks as follows:
+
+			50		 200
+		s  -----------> a ------------------> p
+		|		^
+		|		|
+		|		|-90
+		|		|
+		|---------> b ---
+		     100 
+
+Note that Dijkstra relaxes each edge at most once. 
+
+After Dijkstra(G,s): d(p) = 250, but dist(s,p) = 210
+
+Justification:
+
+0) d(s) = 0, d(v != s) = infinity, s is put in queue.
+1) While exploring s, a and b are explored and put in queue -> [(a,50), (b,100)]
+	// where queue pairs are (v, d(v))
+	
+2) Since min item from queue is a, we explore a next. 
+3) While exploring a, edge (a,p) is relaxed and the loop completes with the following queue -> [(b,100), (p,250)]
+
+4) Since min item from queue is b, we explore b next.
+5) While exploring b, edge (b,a) is relaxed and d(a) is set to 10. 
+	a is not added to the queue since it was explored already.
+
+6) We complete the Dijkstra after removing p. 
+
+Problem: Edge (b,a) was relaxed but vertex a was not added to the queue a second time, 
+	hence ensuring that all outgoing edges from a are relaxed at most once (rule).
+
+This guarantee that all edges are relaxed at most once, did not allow us to change d(p) to its true value of dist(s,p).
+The path s->b->a->p which sets d(p) to its real value of dist(s,p)=10 was not traversed since then we would have relaxed edge (a,p) twice.
+The first time we relaxed it was in step 3.
+
+	
+Conclusion: In order to restrict Dijkstra's execution of operation Q.decrease-key(v, d(v)) to atmost |E| times, 
+		we cannot allow negative edge weights in G.
+		
+	If we did allow negative edge weights, this operation Q.decrease-key(v,d(v)) would far exceed |E| 
+	because some edges would have to be relaxed more than once to ensure that all d(v) = dist(s,v).
+		
+		
+		
+		
+		
+		

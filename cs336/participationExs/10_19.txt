@@ -1,0 +1,18 @@
+Names:
+Kev Sharma
+Michael Zhang
+Troy Chibbaro
+
+
+Select S.name 
+FROM Student S,
+	   EnrolledIn E
+WHERE S.sid = E.sid 
+	and E.cid = "198:336"
+	and S.sid NOT IN 
+		(SELECT S.sid
+		FROM Student S, 
+			   EnrolledIn E
+		WHERE S.sid = E.sid
+			 and E.cid = "198:323")
+

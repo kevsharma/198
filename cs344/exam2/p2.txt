@@ -1,0 +1,48 @@
+Part 1
+=====
+Answer: w'(x,y) = w(x,y)
+
+Recall that w'(x,y) = w(x,y) + phi(x) - phi(y). 
+
+In our Johnson's algorithm, we create a pseudo source vertex (we shall call it s) and draw an edge from s to each vertex v in V; note that w(s,v) for all v in V is set to 0. If all edge weights are non-negative, Bellman-Ford computes the distance from s to each v to be exactly 0. That is, dist(s,v) for all v in V = 0. 
+
+Justification: dist(s,v) cannot be greater than 0 since we know of the path from s to v which we pseudo inserted, to be of distance 0; dist(s,v) cannot be less than 0 since that would violate our assumption of all edge weights being non-negative.
+
+Given that all dist(s,v) are computed to be 0, all phi(v) for all v in V are also 0.
+
+Hence each w'(x,y) computation reduces to w(x,y) + 0 - 0.
+Hence each w'(x,y) equals w(x,y).
+
+Part 2
+=====
+1) general statement, explain the path and edge weights on those paths, and the number of edges on that path
+2) give the formula for w'(x,y) = w(x,y) + phi(x) - phi(y)
+3) apply this to vertices 10
+4) show an example
+
+
+Answer: The largest possible edge weight in G' is exactly 10. 
+
+Take the example graph G, where the pseudo source vertex s in written in purple and vertices x, y, and w(x,y) are highlighted in yellow.
+Note that v9 is considered x and v10 is considered y, w(v9, v10) is set to 1:
+
+* insert graph here*
+
+
+
+In order to maximize w'(x,y), we must maximize [w(x,y)] and [-phi(y)]:
+	1) We should set w(x,y) to its maximum edge weight value of 1
+	2) We should pick a destination vertex y, such that dist(s, y) is the most negative distance of a path from s to y in G'.
+
+Given the graph G', Bellman-Ford gives us:
+	1) dist(s, v10) comes out to -(|V| - 1) = -9 by walking the path from v9 to v1 to ... to v8 to v10.
+	2) dist(s, v9) comes out to 0. 
+
+Computing such a maximum w'(x,y) we have:
+	w'(x,y) = w(v9, v10) + phi(v9) - phi(v10)
+	w'(x,y) = 1 + dist(s, v9) - dist(s, v10)
+	w'(x,y) = 1 + 0 - (-9)
+	w'(x,y) = 10
+
+
+

@@ -1,0 +1,20 @@
+
+Professors( dob : date, name : varchar(150), email : varchar(150), address : varchar(200),
+			primaryKey(dob, name) )
+
+Offices( building: varchar(50), number: int, has_windows : char(1), size_sqft : int,
+			pimaryKey(building, number) )
+
+Students( sID : int, name : varchar(50), GPA : float, age : int, email: varchar(150),
+			primaryKey(sID) ) 
+
+
+has ( dob : date, name : varchar(150), building: varchar(50), number: int,
+		primaryKey ( dob, name )
+		foreignKey (dob, name) references Professors
+		foreignKey (building, number) references Offices )
+		
+advises ( sID : int,  dob : date, name : varchar(150),
+			primaryKey (sID),
+			foreignKey(sID) references Students
+			foreignKey(dob, name) references Professors )

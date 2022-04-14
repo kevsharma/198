@@ -1,0 +1,109 @@
+
+
+
+Proof by Contradiction:
+----------------------
+
+Assume that d(s) = 0 and for every edge (x,y) we have: d(x) + w(x,y) >= d(y)
+and that there exists a vertex such that d(v) > dist(s,v). (Assumption 1)
+
+Let B = {v exists in V | d(v) > dist(s,v)}
+Let child be a vertex in B. (Proposition 1)
+
+Then d(child) > dist(s, child).
+
+Let parent be the vertex that exists in In(child) such that the path from [s to ... to parent to child] forms the minimum path.
+That is, dist(s,child) is the distance of the path which 1. starts at s and 2. goes through parent to 3. get to child.
+
+However if d(child) > dist(s,child), then we cannot pick the aforementioned minimum path.
+Hence d(child) is the distance of a non-minimum path which 
+1.starts at s and 2.goes through any vertex in In(child) except for parent to get 3.to child.
+
+Note that any non-minimum path has a distance greater than any minimum path from s to child. (Proposition 2)
+
+Let the value of minimum path k 	= d(parent) + w(parent, child)
+Let the value of non-minimum path q 	> dist(s, child)
+
+By proposition 2, we have k < q.
+Equivalently, d(parent) + w(parent, child) < dist(s, child)
+
+Equivalently, substituting Proposition 1 we have
+	-> d(parent) + w(parent, child) < dist(s, child) < d(child)
+	-> d(parent) + w(parent, child) < d(child) (Final Statement)
+	
+Note that *Final Statement* violates the KEY PROPERTY that d(x) + w(x,y) has to be >= d(y).
+
+Specifically, d(parent) + w(parent, child) has to be greater than or equal to d(child) by KEY PROPERTY.
+Given our Proposition 1, this KEY PROPERTY is violated.
+
+Hence there is no such vertex child which exists in B.
+The cardinality of B, the set of all bad vertices in prompt, is therefore 0.
+
+Therefore, there exists no vertex where d(vertex) > dist(s, vertex).
+
+We have thus proved that d(v) <= dist(s,v) for all vertices v exists in V.
+
+
+
+
+
+An example:
+-----------
+Say we had a graph:
+
+	      50	20 
+	s -------> a ---------> c
+	|			^
+	|			|
+	|	100		|70
+	-------------->b --------
+
+Then if child = c exists in B, d(child) > dist(s,child)
+Hence d(child) > 70. This implies that d(child) is not representative of the path with minimum distance from s to c. 
+
+Here d(child) can take on the value 170 using the path s->b->c.
+But note that there exists a path s->a->c where the edge (a,c) violates the key property that d(a) + w(a,c) >= d(c).
+In particular: d(a) + w(a,c) >= 170 equals 50 + 20 >= 170 which is logically false.
+
+The violation of this key property is not permissible, hence c cannot exist in B.
+Since we assumed that c existed in B, but it can't, we have a contradiction of our assumption that there exists a vertex d(v) > dist(s,v).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

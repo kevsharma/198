@@ -1,0 +1,25 @@
+No, every vertex in G' is not necessarily in the path from the start vertex of a cycle to the end vertex of said cycle.
+
+			 --->b
+			 |
+Let G = 	s -----> a -------> c
+			 ^	    |
+			 |	    |
+			 ------------
+
+Here G has a directed cycle(a,c).
+After running RemoveZeroDegree(G), we get G' as:
+
+
+
+		--->b
+		|
+Then G' = 	a -------> c
+		^	    |
+		|	    |
+		------------
+
+Because a lies on a cycle, the while loop cannot remove outgoing edges from a.
+Hence, even though b which has an incoming edge from a AND doesn't lie on the cycle(a,c), exists in G'.
+
+So it is not necessarily the case that every vertex in G' is on some directed cycle. This can be seen by the fact that b does not contribute to a cycle.

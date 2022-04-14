@@ -1,0 +1,45 @@
+Part A:
+----------
+1) T1 = R(A)W(A*1.1), R(B)W(B*1.1)
+2) T2 = R(A)W(A-200), R(B)W(B+200)
+
+Part B and C:
+----------
+A = 200
+B = 300
+
+
+1)	TI:			 R(A)W(A*1.1) commit       R(B)W(B*1.1) commit
+	T2:														R(A)W(A-200) commit		R(B)W(B+200) commit
+
+											
+Values after commits:
+
+    				A = 220					B=330
+    															A = 20					B = 530
+    			
+    			
+    											
+    
+2)	TI:			 R(A)W(A*1.1) commit       					R(B)W(B*1.1) commit
+	T2:								R(A)W(A-200) commit						R(B)W(B+200) commit
+
+
+Values after commits:
+					A=220 									B = 330
+										A = 20									B = 530
+										
+										
+										
+
+
+3) 	TI:			 R(A)W(A*1.1) commit       														R(B)W(B + (B-200)*1.1) commit
+	T2:									R(A)W(A-200) commit		R(B)W(B+200) commit
+
+
+
+Values after commits:
+					A = 220																	B = 500 + 300*1.1 = 530
+											A = 20					B = 500
+
+

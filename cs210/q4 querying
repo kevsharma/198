@@ -1,0 +1,74 @@
+
+SELECT avg(R.Price) as average_price_of_hotel_room
+FROM Hotel H, Room R
+WHERE R.HotelNo = H.HotelNo AND H.City = "London" AND H.Country="England";
+
+
+
+How many different guests from New York, USA, have made bookings for the month of August for any year in any hotel?
+
+
+SELECT Count( distinct(G.GuestNo) )
+FROM Guest G, Booking B
+WHERE G.GuestCity = "New York" AND G.GuestCountry = "USA"
+	AND B.GuestNo = G.GuestNo AND Month(B.DateFrom) = 8;
+
+
+
+
+
+Get all rooms with corresponding hotel numbers that are currently unoccupied at the Hilton chain of hotels.
+
+
+
+SELECT H.HotelNo, R.RoomNo
+
+FROM Hotel H, Room R
+
+WHERE H.HotelChainName = "Hilton" AND H.HotelNo = R.HotelNo AND
+	
+	AND NOT EXISTS (
+		SELECT * 
+		FROM Booking B
+		WHERE B.RoomNo = R.RoomNo AND B.HotelNo = R.HotelNo
+			AND CURRENT_DATE() between B.DateFrom and B.DateTo			
+	);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Get the country-wise revenue for each hotel chain for the year 2021. The result should have columns named 'HotelChain', 'Country' and 'Revenue'
+
+
+
+# I am assuming that Room table Price is not daily.
+# If it is, my Sum would be 
+
+SELECT H.HotelChain, H.Country, sum(R.Price * datediff(B.DateFrom, B.DateTo)) as Revenue
+
+FROM Hotel H, Room R, Booking B
+
+WHERE 	H.HotelNo = R.HotelNo AND
+		R.HotelNo = B.HotelNo AND 
+		R.RoomNo = B.RoomNo AND
+		YEAR(B.DateFrom) = 2021
+		
+GROUP BY H.Country, H.HotelChain
+
+		
+
+

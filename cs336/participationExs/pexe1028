@@ -1,0 +1,18 @@
+# Store this in a tmp table:
+	Select S.sid, sum (*) / count(*)
+	From Students S
+	Group By s.sid
+
+
+delimiter //
+	create procedure gpa_ify ()
+	begin
+		
+	end //
+delimiter ;
+
+
+CREATE TEMPORARY TABLE sidgpa
+	Select S.sid, sum (S.gpa) / count(S.gpa) AS gpa
+	From Students S
+	Group By s.sid

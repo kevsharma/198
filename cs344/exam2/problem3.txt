@@ -1,0 +1,132 @@
+Procedure SubsetSumReds(S, B):
+	n <- |S|
+	T[][] <- 2D array of size [n+1][B+1] // space complexity = O(nB)
+	
+// Initialize the first row based to (true, 0 or 1) based on whether an element from the set j itself is equal to T[0][j] and (1) whether it is red or (0) if blue. 
+// indexing for both rows and columns starts at 0
+
+	// initialization step:
+
+	T[0][0].value = true
+	T[0][0].reds = 0
+
+	for i=1 to B:			// O(B)			
+		T[0][i].value = false
+		T[0][i].reds = null
+
+	// overwrite the falses for the items in S which sum to some column in T by themselves for row 0.
+	// i.e if 3 exists in S, then T[0][3] = (true, 0) assuming that item 3 is blue
+	// if item 3 was red, T[0][3] would get attributes (true, 1)
+
+	// The ternary operator S[i].color == red? 1: 0, means 
+	// return 1 if S[i].color is red, otherwise return 0 if the color is blue
+
+	for i=0 to n-1: 			// O(n); elements in set S are indexed from 0 to n-1 
+		item = S[i]
+		if item <= B:
+			T[0][item].value = true
+			T[0][item].reds = item.color == red ? 1 : 0 
+
+
+	
+	// DP relation	
+	// *** note that if we select T[i-1][j-S[i]] and add S[i] to it to get to j, there is a chance
+		// that we will add a item that is red. So we must account for that in the min()
+		// however, selecting T[i-1][j] subset sum for j won't require such a measure.
+
+	for i=1 to n:				// O(n)
+	    for j = 0 to B: 			// some constant * O(B) = O(B)
+		
+		// all the following operations take Constant time
+
+		if T[i-1][j].value && T[i-1][j-S[i]].value:
+			total = S[i].color == red ? 1 : 0
+			total = min ( T[i-1][j].reds , T[i-1][j-S[i]].reds + total ) // ***
+			T[i][j].value = true
+			T[i][j].reds = total
+
+		else if T[i-1][j-S[i]].value:
+			total = S[i].color == red ? 1 : 0
+			total = T[i-1][j-S[i]].reds + total	// ***
+			T[i][j].value = true
+			T[i][j].reds = total	
+
+
+		else if T[i-1][j].value:
+			T[i][j].value = true
+			T[i][j].reds = T[i-1][j].reds		// ***
+
+		else:
+			T[i][j].value = false
+			T[i][j].reds = null
+
+
+		// Final check to ensure we don't use more than 100 red
+
+		if T[i][j].value && T[i][j].reds >= 100:
+			T[i][j].value = false
+			T[i][j].reds = false
+			 
+
+	return T[n][B].value
+
+
+	
+Runtime: nested for loops give us a runtime of O(n * B) = O(nB). 
+
+=============
+
+
+
+
+1.  Each element T[i][j] in the table can be considered an object with two field attributes: the first is T[i][j].value which is assigned either true or false; the second is T[i][j].reds which is assigned the number of red elements used to sum to j.  Saying T[i][j] = (true, 5) means T[i][j].value = true, and T[i][j].reds = 5. If j can't be summed to, T[i][j] is set to (false, null).
+
+
+2.  DP-relation: T[i][j].value is true if either T[i-1][j].value is true or T[i-1][j-S[i]].value is true. 
+		Suppose that "total" is set to 1 if S[i].color is red, 0 if S[i].color is blue.
+		To initialize T[i][j].reds, we have 3 cases:
+		 Case 1: T[i-1][j].value and T[i-1][j-S[i]].value are true. Then T[i][j].reds = min ( T[i-1][j].reds , T[i-1][j-S[i]].reds + total ).
+		 	We only add total to T[i-1][j-S[i]] since *here we are adding an item to sum to j*  using S[i] that may potentially be red. 
+		 Case 2:  Only T[i-1][j].value is true. Then T[i][j].reds = T[i][j].reds.
+	
+Justification: The optimal sub-structure requires use of as few red elements as possible to sum to the current j in T[i][j]. This results in the fewest possible reds used to sum to B. If T[i][j].reds exceeds 100, then we know that no combination of elements from S can sum to B using atmost 100 reds because of our algorithm's table maintaining optimal substructure. Hence even if we know that T[i][j] can be set to true, we must still determine what integer to allocate to T[i][j].reds. 
+
+3.  We start by initializing all columns in the row T[0]. For each item in the set S, T[0][S_item] is set to (true, 0) or (true, 1) depening on whether that item.color is blue or red respectively. That is, T[0][8] being set to (true, 1) means that there exists an element in set S whose value is 8 and whose color is red. Any items whose value exceeds B will not be initialized in T. 
+
+4.  We return T[n][B].value. 
+
+
+Note 1: My dynamic programming table T is a 2D array of dimensions (n+1) by (B+1). The rows are indexed from 0 to n inclusive and the columns are indexed from 0 to B inclusive. 
+
+Note 2: 
+
+Note 3: For the remainder of the algorithm, the conditionals employ the fact that T[i][j].value evaluates to either true or false but not both. 
+
+Note 4: Similar to min coins from class, this dp table T assumes that T[i][k] for all k$<$0 evaluates to (false, null). That is, T[i][j-S[i]] will give (false, null) if (j-S[i]) $<$ 0.
+
+Dp relation: few thigns to talk about:
+	1) what if we already have previous elements sum to j T[i-1][j], if so can we still optimize for reds?
+		1.1) if T[i-1][j-S[i]] is true 
+		1.2) if   ^	      		is false
+	
+	2) if T[i-1][j] is false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+you can import other html code
+by using a directive with an attribute include
+
+you can import classes and the likes as well in your directives and call those
+
+Not only can you build on top of code that others wrote but you can use jsps to 
+auto convert into servlets for less out.println(*insert html shit here*)
+
+
+So now lets talk about builtin objects:
+BuiltIn Object (can be used in Scriptlet and Expression):
+	Request (HttpServletRequest)
+	Response (HttpServletResponse)
+	PageContext (PageContext)
+	Out (JspWriter) ~ PrintWriter object
+	Session (HttpSession)
+	Application (ServletContext)
+	Config (ServletConfig)
+	
+
+You can refactor all your code to point to some Error screen.
+	-> Instead of coding all your errors on one screen
+	
+Driver: com.mysql.jdbc.Driver
+URL: jdbc:mysql://localhost:3306/navin
+
+username: genshin
+password: waifus
+
+
+Don't write your business logic inside JSP
+	-> Consider Servlet for this task
+	
+JSP = view 
+Servlet = business logic (middle controller)
+DBMS = backend (model)
+
+Why is JSP view and not HTML?
+	-> HTML = static pages
+	-> JSP = dynamic pages
+
+

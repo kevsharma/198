@@ -1,0 +1,200 @@
+<html>
+
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+body { width: 90%; margin-left: 5%; 
+font: 14px sans-serif, Trebuchet MS, Arial}
+h2 {padding-top: 1.5em; }
+.task { font: 14px Verdana, Arial, sans-serif; margin-top: 2em; color:blue;}
+.func {font: 14px monospace; color: brown; }
+.fnhdr { text-decoration: none; }
+a, a:hover, a:visited { color: blue; }
+.pts { color: red; }
+</style>
+    <title>Setting up Python 3.x/Ananconda</title>
+    <div style="margin-top:50px;margin-bottom:20px;margin-left:20px; margin-right:20px">
+        <div style="text-align: center;">
+            <h2>CS 210 - Data Management for Data Science</h2>
+        </div>
+    </div>
+<style>
+a, a:visited, a:hover { color: blue; }
+</style>
+</head>
+
+<body>
+    <div style="margin-top:20px;margin-bottom:50px;margin-left:20px; margin-right:20px">
+        <h2>
+            Setting up Python 3.x
+        </h2>
+        <ul>
+            <li>
+                <h3>Anaconda</h3>
+                There are two versions of Anaconda - Graphical and Command Line. Use the links below to follow the steps
+                to install it for your OS. We might need to use both these versions, so it is recommended to install
+                both on your system.
+                <ol>
+		  <li><h4>Overview and Requirements</h4>
+		    Visit <a href="https://docs.anaconda.com/anaconda/install/">Installation</a> for general system requirements.
+		      </li>
+                    <li>
+                        <h4>Windows</h4>
+                    </li>
+                    Visit <a href="https://docs.anaconda.com/anaconda/install/windows/">Anaconda Windows
+                        Installation</a> for a step by step guide.
+                    <br><b>
+                        Installing PyCharm is optional.
+                    </b>
+                    <li>
+                        <h4>macOS</h4>
+                    </li>
+                    Visit <a href="https://docs.anaconda.com/anaconda/install/mac-os/">Anaconda macOS Installation</a>
+                    for a step by step guide.
+                    <br><b>
+                        Installing PyCharm is optional.
+                    </b>
+                    <li>
+                        <h4>Linux</h4>
+                    </li>
+                    Visit <a href="https://docs.anaconda.com/anaconda/install/linux/">Anaconda Linux Installation</a>
+                    for a step by step guide.
+                    <br><b>
+                        Installing PyCharm is optional.
+                    </b>
+                </ol>
+            </li>
+
+            <li>
+                <h3>Getting started with Anaconda Navigator</h3>
+                Prerequisites: Anaconda Installation. You can check how to Start and Manage Anaconda Navigator for different operating systems <a href = "https://docs.anaconda.com/anaconda/navigator/getting-started/">here</a>.
+
+            </li>
+
+            <li>
+                <h3>Jupyter Notebook</h3>
+                Anaconda installation takes care of installing Jupyter Notebook. You can launch it in either of the two
+                ways listed below:-
+                <ol>
+                    <li>Open Anaconda Navigator and click on the "Launch" button below Jupyter Notebook.</li>
+                    <li>Open the Anaconda Prompt (Windows) or the Terminal (macOS or Linux). Type "jupyter notebook" and
+                        press Enter/Return.</li>
+                </ol>
+
+            </li>
+            <li>
+                <h3>Jupyter Lab</h3>
+                Anaconda also installs Jupyter Lab on your system. Launching steps are similar to Jupyter Notebook.You
+                can launch it in either of the two ways listed below:-
+                <ol>
+                    <li>Open Anaconda Navigator and click on the "Launch" button below Jupyter Lab.</li>
+                    <li>Open the Anaconda Prompt (Windows) or the Terminal (macOS or Linux). Type "jupyter lab" and
+                        press Enter/Return.</li>
+                </ol>
+
+            </li>
+        </ul>
+        
+        <h2>Jupyter Lab Interface </h2>
+
+        <br>See <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">here</a>.
+        <h2> Navigating a Jupyter Notebook<br></h2>
+        Jupyter Notebook is built off of IPython, an interactive way of running Python code in the terminal using the
+        REPL model (Read-Eval-Print-Loop). A Jupyter Notebook goes by the extension ".ipynb".
+        <br>Please check the previous sections on how to launch a Jupyter Notebook. Once launched, you can navigate
+        through the file system and open an existing notebook, or create a new notebook by navigating to the desired
+        loaction in the file system and clicking on the "New" button on the right-hand side and then "Python 3".
+        <ul>
+            <li>On the top you can see when the last checkpoint was made/notebook was saved.</li>
+            <li>Below that, we have the Menu Bar with the basic menus with general options.</li>
+            <li>Below that, we have various buttons which correspond to save, insert cell, cut cell, copy selected
+                cells, paste cells, move cells up or down, run, interrupt, restart, restart and re-run the kernel.
+                Beside that, we have various cell options like Code and Markdown.</li>
+            <li>Next, we have the main area where we write our code. Usually, each line of code is written in a single
+                cell, except for classes and functions which can have many lines of code but still use a single cell.
+            </li>
+            <li>You can write code in these cells and press Shift + Enter/Return to run them.</li>
+        </ul>
+        <h2> Running Python on Command Line<br></h2>
+        This requires the user to open the Anaconda Prompt/Terminal.
+        <ul>
+            <li>Executing .py files on command line</li>
+            <ol>
+                <li>Navigate to the folder where you have saved the python file.</li>
+                <li>Initially you will be in the root directory. To jump into a sub-directory, you can type in "cd
+                    directory-name" and press Enter/Return.</li>
+                <li>You can jump out of a directory to the parent directory by typing "cd .." and pressing Enter/Return.
+                </li>
+                <li>Once you are in the directory that contains your python file with the ".py" extension, you can type
+                    "python3 filename.py" to run it.</li>
+            </ol>
+            <br>
+            <li>Using the python interpreter
+                <ol>
+                    <li>The Interpreter does not require you to be at a specific location in the file system.</li>
+                    <li>You can simply type in "python3" in the Anaconda Prompt or Terminal to open the Interpreter.
+                    </li>
+                    <li>Type in the commands you want to execute and press Enter/Return after typing each one of them.
+                    </li>
+                </ol>
+                <b>Extra: </b>For lines of code requiring indentations, e.g., function bodies, loop bodies, you can
+                press the Tab key to give indentations for each line as needed.
+            </li>
+        </ul>
+        <h2>Some additional tips
+        </h2>
+        <ul>
+            <li>
+                Organize your code in a separate workspace, into proper folders for ease of access and better navigation.
+            </li>
+            <li>Most of the coding in this course will be done on Jupyter Notebooks but it is always recommended to explore other forms that suit you.</li>
+            <li>There are certain IDEs like PyCharm and text editors like VSCode, Sublime Text and Atom that are well suited for coding and are really helpful with their own set of features.</li>
+            <li>Google Colab is also an interesting resource that allows you to run code on their GPUs and TPUs. You can also work on datasets stored on your Google Drive!</li>
+            
+            <li>
+                Some Download links:
+                <ol>
+                    <li><a href = "https://www.jetbrains.com/pycharm/download/">PyCharm Community Edition</a></li>
+                    <li><a href = "https://code.visualstudio.com/download">VSCode</a></li>
+                    <li><a href = "https://www.sublimetext.com/3">Sublime Text</a></li>
+                    <li><a href = "https://atom.io">Atom</a></li>
+                    <li>Explore <a href = "https://colab.research.google.com/">Google Colab</a>.</li>
+                </ol>
+            </li>
+        </ul>
+        <h2>
+            Using Anaconda virtual environment on Windows/Mac/Linux (Optional)
+        </h2>
+        For this part, the Command Line version of Anaconda needs to be installed on your system. Please go through the
+        previous section for doing so.
+        <ol>
+            <li>Check if conda is installed and is in your PATH.
+                Open your Anaconda Prompt/Terminal and type in "conda -V" and press Enter/Return.
+                If conda is installed, you should see the conda version in response.
+            </li>
+            <li>
+                Check if conda is up to date. Type "conda update conda" and press Enter/Return.
+                This will update conda if any updates are available.
+            </li>
+            <li>
+                Type "conda create --name yourenvname" and press Enter/Return. Press "y" to proceed.
+
+            </li>
+            <li>
+                Activate your environment by typing in "conda activate yourenvname" and pressing Enter/Return.
+            </li>
+            <li>
+                To install additional packages only to your virtual environment, use the format "conda install -n
+                yourenvname [package]"
+            </li>
+            <li>
+                Deactivate your virtual environment after use by typing "conda deactivate" and pressing Enter/Return.
+            </li>
+            <li>
+                You can delete your environment by typing "conda remove -n yourenvname -all" and pressing Enter/Return.
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>

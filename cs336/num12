@@ -1,0 +1,84 @@
+
+	
+11
+
+# let Result10 be the Table computed from the query in problem 10.
+# its of the form Result10(cid, section, fail_percentage)
+
+SELECT Professor.name
+FROM Result10 JOIN Professor USING (ssn)
+WHERE Result10.fail_percentage >=  (SELECT Max(fail_percentage) FROM Result10);
+
+
+On average what percentage of students fail a course? (total number of students that failed a
+course / total number of enrolled students).
+
+What is the average percentage of enrolled students who have failed at least one course.
+
+
+- Find the total number of enrolled Students
+
+SET @total_number_enrolled_students = 
+	Select Count(*)
+	From (
+		SELECT *
+		From Enrollment
+		Group By sid
+	);
+
+SET @count_students_failing_atleast_one_course = 
+
+	SELECT Count(*)
+	From (
+			SELECT sid
+			FROM (  SELECT sid, cid, section, 
+					if(grade = 'D' or grade = 'F', 1, 0) AS fail
+				    	FROM Enrollment )
+			Group By sid
+			Having Sum(fail) > 0
+	);
+	
+SELECT round(@count_students_failing_atleast_one_course / @total_number_enrolled_students * 100);
+
+
+
+Or
+
+Select (
+	SELECT Count(*)
+	From (
+			SELECT sid
+			FROM (  SELECT sid, cid, section, 
+					if(grade = 'D' or grade = 'F', 1, 0) AS fail
+				    	FROM Enrollment )
+			Group By sid
+			Having Sum(fail) > 0
+	)
+	
+	/
+	
+	Select Count(*)
+	From (
+		SELECT *
+		From Enrollment
+		Group By sid
+	)
+);
+
+
+13.
+
+SET @avg_fail := (SELECT * FROM Result12);
+
+SELECT cid, section
+FROM (
+	SELECT cid, section, if(grade="D" or grade="F", 1, 0) as gbool
+	FROM Enrollment
+   )
+GROUP BY cid, section
+HAVING Sum(gbool)/Count(*) > avg_fail;
+
+
+
+
+

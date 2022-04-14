@@ -1,0 +1,73 @@
+Chapter 5 - Oct 19 notes.
+
+
+SELECT * FROM  students; // gives all fields
+
+SELECT name FROM students WHERE name LIKE 'H%o';
+	
+	'H_ _ _ _' = 4 characters match
+	Strings: >, <, <=, >= (lexiographical order)
+	
+SELECT * FROM Table1, Table2;
+	- will pair all tuples (combinations) 		( _ , _ )
+	
+	recall from relational logic, that what we are computing is really the Cross product
+	of t1 and t2. Table1 x Table2
+	
+SELECT * FROM t1, t2 WHERE t1.x = t2.x;
+	-> Here the first part (combination) happens 
+	-> Then we filter out the ones that are true
+-> Formally, it computes cartesian product first and then extracts records where t1.x = t2.x
+
+
+SET operations:
+	A union B
+	A intersect B
+	A - B = A except B
+	
+(first query) union (second query) 
+-> return is a set with no duplicates
+
+
+SELECT S.name FROM STUDENTS S, ENROLLEDIN E, COURSES C
+WHERE S.SID = E.SID and E.CID = E.CID and C.dept = "CS"
+UNION
+SELECT S.name FROM STUDENTS S, ENROLLEDIN E, COURSES C
+WHERE S.SID = E.SID and E.CID = E.CID and C.dept= "MATH"
+
+otherwise we could:
+
+SELECT S.name FROM STUDENTS S, ENROLLEDIN E, COURSES C
+WHERE S.SID = E.SID and E.CID = E.CID and C.dept = "MATH" or C.dept = "CS"
+
+But the same will not work for AND. 
+NOTE, MySQL does not support intersect.  
+- Because there is only one C.dept value.
+
+screenshot of this example posted in discord - hmework help for d336
+
+
+3.  Now lets look at difference:
+	- Students enrolled in 198:336 but not taking 198:323
+
+	Select S.name 
+	FROM Student S,
+		   EnrolledIn E
+	WHERE S.sid = E.sid 
+		and E.cid = "198:336"
+		and S.sid NOT IN 
+			(SELECT S.sid
+			FROM Student S, 
+				   EnrolledIn E
+			WHERE S.sid = E.sid
+				 and E.cid = "198:323")
+
+Note that we could use sets and thus use except as well. above was subqueries.
+
+SELECT S.name from students s, enrolled in e, where s.sid = e.sid and e.cid = "183:336"
+EXCEPT
+Select s.name from students, enroleldin e, where s.sid = e.sid and e.cid = "198:323"
+
+
+
+	

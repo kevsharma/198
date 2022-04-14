@@ -1,0 +1,131 @@
+airlineid and flight_no
+
+aircraftid
+
+both  may only participate in one relationship.
+
+that means 
+
+
+
+Relational Schema:
+
+Airport (
+	airport_name : varchar(250),
+	airportId : varchar(3), // make sure 3 alphabetical through Check constraint
+	Primary Key (airportId)
+)
+
+Admin (
+	userID : int
+	email : varchar(50),
+	lastname : varchar(30),
+	firstname: varchar(30),
+	Primary Key (userID)
+)
+
+Customer (
+	userID : int
+	email : varchar(50),
+	lastname : varchar(30),
+	firstname: varchar(30),
+	Primary Key (userID)
+)
+
+Representative (
+	userID : int
+	email : varchar(50),
+	lastname : varchar(30),
+	firstname: varchar(30),
+	Primary Key (userID)
+)
+
+Ticket (
+	ticketID : int,
+	class : char(1),
+	purchasedatetime : datetime,
+	seat_no : int,
+	total_fair : double,
+	userID : int NOT NULL, 
+	Primary Key (ticketID),
+	Foreign Key (userID) references Customer
+)
+
+Question (
+	userID : int,
+	question_no : int,
+	text : varchar(500),
+	answer_test : varchar(500), // only null if answer_rep_userID is null
+	answer_rep_userID : int, // only null if answer_test is null.
+	Primary Key (userID, question_no),
+	Foreign Key (userID) references Customer,
+	Foreign Key (answer_rep_userID) references Representative
+)
+
+
+
+// unlike Has_ticket, where Ticket may only have 1 Customer
+// Has_Flight has Ticket where Ticket may have many Flights. 
+// So we can't put has_flight into Ticket table because pk of Ticket is ticketID
+// and get 1 Ticket may have many Flights so no way to query Multiple flights
+
+Has_Flight (
+	ticketID : int,
+	airlineID : int,
+	flight_no : int,
+	Primary Key (ticketID, airlineID, flight_no),
+	Foreign Key (ticketID) references Ticket,
+	Foreign Key (airlineID, flight_no) references Flight
+)
+
+
+Flight (
+
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

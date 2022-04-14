@@ -1,0 +1,31 @@
+show databases;
+
+create database nobels;
+
+# because nobels is a database, nobels.* means tables in database
+grant all on nobels.* to 'sesh'@'localhost';
+
+
+mysql -u sesh -p nobels
+
+show tables;
+
+create table winners (
+	year year not null,
+	category char(10) not null);
+	
+# the tables in this db
+show tables;
+
+# show the Field, type, null allowed, key, default, extra	
+desc winners;
+
+alter table winners add column fname varcchar(80) not null;
+alter table winners add column lname varchar(40) not null;
+alter table winners add column motivation varchar(500) not null;
+
+show create table laureate\G;
+# ^ shows you the schema for DDL
+
+
+

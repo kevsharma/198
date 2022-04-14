@@ -1,0 +1,11 @@
+Patrick McDonough
+Kev Sharma
+Troy Chibbaro
+
+select s.name,
+	count(*)
+from students s,
+	enrolled in e
+where s.sid = e.sid
+    and e.grade = 'A'
+group by s.name;
